@@ -1,0 +1,27 @@
+header {
+    background-color: #2160bd;
+    align-items: center;
+    width: 100%; 
+    z-index: 1000; 
+    top: 0; 
+    position: fixed;
+    height: 146px;
+}
+
+.brasao-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: white;
+}
+
+header img {
+    margin-right: 10px;
+    height: 70px;
+    margin-top: 15px;
+}
+
+.titulo-container {
+    display: flex;
+    flex-direction: column;
+}

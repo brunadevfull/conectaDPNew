@@ -1,0 +1,14 @@
+h1, h2, h3 {
+    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.span-subtitulo-marinha {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.span-subtitulo-lema {
+    font-size: 13px;
+    font-weight: 400;
+}
