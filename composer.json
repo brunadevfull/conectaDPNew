@@ -1,0 +1,21 @@
+{"autoload": {
+    "psr-4":
+    {
+        "App\\":  "app/"
+                  
+    }
+},
+    "require": {
+        "vlucas/phpdotenv": "*",
+	"phpoffice/phpspreadsheet": "^1.28"
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.cloud.tencent.com/composer/"
+        }
+    }
+}

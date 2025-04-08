@@ -1,0 +1,104 @@
+*{
+    padding:0;
+    margin:0;
+    
+}
+body{
+    box-sizing: border-box;
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+   
+}
+
+
+header{
+    background-color: #2160bd;
+    height:20vh;
+    display:flex;
+    align-items: center;
+    position: fixed;
+    top:0;
+    width: 100vw;
+}
+
+.brasao-container{
+    display:flex;
+    align-items: center;
+    width:100%;
+    color:white;
+}
+
+header img{
+    margin:0 0 0 20%;
+}
+
+.titulo-container{
+    display:flex;
+    flex-direction: column;
+}
+
+
+h1{
+    margin:0 0 0 2%;
+    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.span-subtitulo-marinha{
+    margin:0 0 0 2%;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.span-subtitulo-lema{
+    margin:0 0 0 2%;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+main{
+    width: 100vw;
+    margin-top:10vh;
+    margin-bottom:10vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#conecta{
+    margin-right:17vw;
+    margin-top:12vh;
+    color: #7F7F7F;
+}
+
+#consultar{
+    margin:2vh;
+    width:20%;
+    padding:10px;
+    border:2px solid #2160bd;
+    border-radius: 6px;
+    background-color: white;
+}
+
+footer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2160bd;
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    color: white;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+ 
