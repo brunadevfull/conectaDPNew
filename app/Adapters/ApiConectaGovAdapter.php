@@ -8,19 +8,32 @@ class ApiConectaGovAdapter
     private $clientId;
     private $clientSecret;
     private $accessToken;
+    private $serviceType;
 
     public function __construct($serviceType)
     {
+        $this->serviceType = $serviceType;
         $this->tokenUrl = getenv("API_{$serviceType}_URL");
         $this->clientId = getenv("API_{$serviceType}_CLIENT_ID");
         $this->clientSecret = getenv("API_{$serviceType}_CLIENT_SECRET");
+        
+        // Debug para verificar se as variáveis estão sendo lidas corretamente
+        error_log("TokenURL: " . $this->tokenUrl);
+        error_log("ClientID: " . $this->clientId);
+        error_log("ClientSecret: " . substr($this->clientSecret, 0, 5) . "...");
     }
+
+    
 
     public function getToken()
     {
         if ($this->accessToken) {
             return $this->accessToken;
         }
+
+        error_log("Tentando obter token para: " . $this->serviceType);
+        error_log("URL: " . $this->tokenUrl);
+        error_log("Client ID: " . $this->clientId);
 
         $authorization = base64_encode("{$this->clientId}:{$this->clientSecret}");
         $headers = [

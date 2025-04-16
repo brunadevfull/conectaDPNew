@@ -1,0 +1,203 @@
+/* tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideFadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    transform: scale(0);
+  } 
+  40% {
+    transform: scale(1.0);
+  }
+}
+
+/* Custom component classes */
+@layer components {
+  /* Layout and containers */
+  .main-container {
+    @apply flex flex-col relative bg-white border border-gray-300 shadow-md rounded-lg p-8 w-full max-w-4xl mx-auto my-12 min-h-[320px] justify-center;
+    animation: slideFadeInUp 0.5s ease-out forwards;
+  }
+  
+  .main-container::before {
+    content: '';
+    @apply absolute -top-2 -right-2 -bottom-2 -left-2 -z-10 bg-gradient-to-br from-white/80 to-gray-100/80 rounded-xl transition-opacity;
+  }
+  
+  /* Login components */
+  .login-container {
+    @apply flex justify-center items-center min-h-[80vh] p-5;
+  }
+  
+  .login-box {
+    @apply bg-white rounded-xl shadow-lg py-6 px-6 w-full max-w-sm;
+    animation: slideFadeInUp 0.5s ease-out forwards;
+  }
+  
+  .login-box-smaller {
+    @apply bg-white rounded-xl shadow-lg py-8 px-6 w-full max-w-sm;
+    animation: slideFadeInUp 0.5s ease-out forwards;
+  }
+  
+  .login-title {
+    @apply flex items-center justify-center gap-2 text-xl font-bold text-gray-800 mb-5;
+  }
+  
+  .login-title i {
+    @apply text-blue-600 text-2xl;
+  }
+  
+  .login-subtext {
+    @apply text-center text-sm text-gray-600 mb-4;
+  }
+  
+  /* Form elements */
+  .input-group {
+    @apply relative mb-5;
+  }
+  
+  .input-group i {
+    @apply absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500 text-base;
+  }
+  
+  .input-group label {
+    @apply absolute left-3 top-3 text-gray-400 italic text-base pointer-events-none transition-all duration-200 ease-in-out;
+  }
+  
+  .input-group input:focus + label,
+  .input-group input:not(:placeholder-shown):valid + label {
+    @apply -top-2 text-xs text-blue-600 bg-blue-50 px-1;
+  }
+  
+  .form-input {
+    @apply w-full py-3 px-4 pl-10 rounded-md border border-gray-300 bg-gray-50 text-sm transition-all focus:outline-none focus:border-blue-500 focus:bg-white;
+  }
+  
+  /* Buttons */
+  .login-btn {
+    @apply w-full py-3 px-4 bg-gradient-to-b from-blue-500 to-blue-700 text-white font-bold border-none rounded-lg text-sm cursor-pointer transition-all hover:from-blue-600 hover:to-blue-800 hover:transform hover:-translate-y-0.5;
+  }
+  
+  .custom-button {
+    @apply inline-block py-2.5 px-5 border border-blue-500 rounded-md bg-blue-500 text-white text-center cursor-pointer shadow-sm transition-all hover:bg-blue-600 hover:border-blue-600 my-2.5;
+  }
+  
+  /* Toggle buttons */
+  .btn-toggle {
+    @apply border-2 border-gray-800 inline-flex flex-col items-center p-3 relative text-center transition-all duration-500 -m-1 cursor-pointer;
+  }
+  
+  .btn-toggle img {
+    @apply w-8 h-8 block mx-auto;
+  }
+  
+  /* Custom select */
+  .custom-select {
+    @apply w-full py-2.5 px-4 border border-gray-300 rounded-md bg-gray-50 text-gray-700 appearance-none cursor-pointer;
+  }
+  
+  /* File upload */
+  .custom-file-upload {
+    @apply cursor-pointer relative overflow-hidden inline-flex items-center border border-gray-300 rounded-md p-3 bg-gray-50 text-gray-700 transition-shadow hover:shadow-md;
+  }
+  
+  .custom-file-upload input[type="file"] {
+    @apply absolute top-0 right-0 opacity-0 cursor-pointer;
+  }
+  
+  /* Password requirements */
+  .password-requirements {
+    @apply text-sm text-gray-600 mb-5;
+  }
+  
+  .password-requirements ul {
+    @apply list-none pl-0;
+  }
+  
+  .password-requirements li {
+    @apply py-1 relative pl-5;
+  }
+  
+  .password-requirements li::before {
+    content: "–";
+    @apply absolute left-0 text-gray-400;
+  }
+  
+  .password-requirements li.valid::before {
+    content: "✓";
+    @apply text-green-500 font-bold;
+  }
+  
+  .password-requirements li.valid {
+    @apply text-green-500;
+  }
+  
+  .password-requirements li.invalid {
+    @apply text-gray-400 line-through;
+  }
+  
+  /* Loading indicator */
+  .loader {
+    @apply hidden border-4 border-gray-200 border-t-blue-500 rounded-full w-12 h-12 fixed top-1/2 left-1/2 z-50;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+  
+  .loading-dots {
+    @apply flex justify-center items-center gap-1;
+  }
+  
+  .dot {
+    @apply inline-block w-2 h-2 rounded-full bg-black;
+    animation: pulse 1.4s infinite ease-in-out both;
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  /* Header and navigation */
+  .header {
+    @apply bg-blue-700 w-full z-50 top-0 fixed h-36;
+  }
+  
+  /* Utility classes */
+  .fade-in {
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: slideFadeInUp 0.5s ease-out forwards;
+  }
+}

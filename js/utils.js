@@ -277,7 +277,11 @@ function formatDocumento(input) {
 }
 
 function clearAndHideGrid() {
-    $("#jqxgrid").jqxGrid('clear');
+    if ($.fn.jqxGrid) {
+        $("#jqxgrid").jqxGrid('clear');
+    } else {
+        console.warn("jqxGrid não está disponível. Certifique-se de incluir a biblioteca jQWidgets.");
+    }
     $("#jqxgrid").hide();
 }
 

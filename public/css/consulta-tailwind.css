@@ -1,0 +1,76 @@
+.main-container {
+    @apply min-h-screen bg-gray-100 flex items-center justify-center p-4;
+}
+
+.main-container form {
+    @apply w-full max-w-md bg-white shadow-md rounded-lg p-6;
+}
+
+/* Título */
+.main-container h2 {
+    @apply text-2xl font-bold text-navy-800 text-center mb-6;
+}
+
+/* Container de seleção */
+.select-container {
+    @apply mb-4;
+}
+
+.custom-select {
+    @apply w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Toggle buttons */
+#digenv {
+    @apply flex justify-center space-x-4 mb-6;
+}
+
+.toggle {
+    @apply hidden;
+}
+
+.btn1 {
+    @apply border border-gray-300 px-4 py-2 rounded-lg text-gray-700 flex items-center space-x-2 cursor-pointer transition duration-300 hover:bg-blue-50;
+}
+
+.btn1 img {
+    @apply w-6 h-6;
+}
+
+/* Inputs */
+#cpfInput, #arquivoInput {
+    @apply mb-4;
+}
+
+#documento, .custom-file-upload {
+    @apply w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.custom-file-upload {
+    @apply flex items-center space-x-2;
+}
+
+/* Botão de consulta */
+#btn_consult {
+    @apply w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300;
+}
+
+/* Loading indicator */
+#loadingIndicator {
+    @apply flex items-center justify-center space-x-2 text-gray-600;
+}
+
+.dots {
+    @apply flex space-x-1;
+}
+
+.dot {
+    @apply w-2 h-2 bg-blue-500 rounded-full animate-pulse;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    .main-container form {
+        @apply w-full;
+    }
+}

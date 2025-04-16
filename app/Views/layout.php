@@ -3,7 +3,7 @@
 <html>
 <head>
     <!-- CSS Globais -->
-    <link rel="stylesheet" type="text/css" href="/conectaPapem/css/global.css">
+    <link rel="stylesheet" type="text/css" href="../../public//css/global.css">
     
     <!-- CSS Específicos por página -->
     <?php echo $additionalCSS ?? ''; ?>

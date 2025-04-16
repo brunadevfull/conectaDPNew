@@ -1,5 +1,6 @@
 <?php
-// app/Factories/ControllerFactory.php
+// app/Factories/ControllerFactory.php - Versão corrigida
+
 namespace App\Factories;
 
 use App\Controllers\CadastroController;
@@ -26,21 +27,23 @@ class ControllerFactory
         return new CadastroController($cadastroService, $view);
     }
     
-    // app/Factories/ControllerFactory.php
     public static function createConsultaController()
     {
         $usuarioRepository = new UsuarioRepository();
-        var_dump($usuarioRepository); // Verificar se o objeto foi criado corretamente
-        
         $loginHistoryRepository = new LoginHistoryRepository();
-        var_dump($loginHistoryRepository); // Verificar se o objeto foi criado corretamente
-        
         $authService = new AuthService($usuarioRepository, $loginHistoryRepository);
-        var_dump($authService); // Verificar se o service foi criado corretamente
-        
         $consultaService = new ConsultaService(new ConsultaRepository());
         $view = new ConsultaView();
         
         return new ConsultaController($authService, $consultaService, $view);
+    }
+    
+    public static function createRelatorioController()
+    {
+        $consultaRepository = new ConsultaRepository();
+        $consultaService = new ConsultaService($consultaRepository);
+        $view = new RelatorioView();
+        
+        return new RelatorioController($consultaService, $view);
     }
 }

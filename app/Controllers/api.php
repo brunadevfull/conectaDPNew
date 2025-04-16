@@ -1,10 +1,13 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php'; // Ajuste o caminho conforme necessário
-use App\Controllers\ConsultaController;
+// app/Controllers/api.php - Versão corrigida
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use App\Factories\ControllerFactory;
 
 session_start();
 
-$controller = new ConsultaController();
+// Usar a factory para criar o controller
+$controller = ControllerFactory::createConsultaController();
 
 header('Content-Type: application/json');
 
@@ -26,4 +29,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo json_encode(['error' => 'Método HTTP não suportado']);
 }
-?>

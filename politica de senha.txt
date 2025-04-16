@@ -1,9 +1,0 @@
-O Portal de Serviços da MB (Portal MB) é uma aplicação que permite aos usuários enquadrados na DCTIMARINST N° 30-04D, o acesso aos recursos de Tecnologia da Informação e Comunicações (TIC) disponíveis na RECIM, quando ausentes de sua OM ou cumprindo missão fora da MB.
-
-Caso uma “senha-fraca” de algum usuário deste serviço seja comprometida e divulgada na Internet, um intruso poderia ter acesso a recursos da RECIM.
-
-Em função disso, no sentido de tornar o acesso ao Portal MB mais seguro, garantindo a autenticidade de seus usuários e impedindo que pessoas não autorizadas ameacem à segurança da RECIM, será aplicada em 30SET uma nova política de senha forte que deverá atender aos seguintes requisitos:
-
-Possuir no mínimo: 12 caracteres, 01 letra maiúscula, 01 letra minúscula, 01 número e 01 caractere especial.
-
-A partir desta data, quando o usuário realizar o “login”, será solicitada a alteração da sua senha de acesso.

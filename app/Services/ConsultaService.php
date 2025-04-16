@@ -16,6 +16,7 @@ class ConsultaService implements ConsultaServiceInterface
         $this->consultaRepository = $consultaRepository;
     }
 
+    
     public function readDocumentsFromExcel($filePath)
     {
         $documentArray = [];
@@ -43,26 +44,55 @@ class ConsultaService implements ConsultaServiceInterface
         return $documentArray;
     }
 
+
     public function registerConsulta($username, $documento, $tipoDocumento)
     {
         return $this->consultaRepository->registerConsulta($username, $documento, $tipoDocumento);
     }
 
-    public function performConsulta($tipo, $documentos)
-    {
+ 
+public function performConsulta($tipo, $documentos)
+{
+    try {
         $adapter = new ApiConectaGovAdapter($tipo);
-
+        
         switch ($tipo) {
             case 'CPF':
                 return $adapter->consultaCpf($documentos);
             case 'CNPJ':
-                return $adapter->consultaCnpj($documentos[0]);
+                // Se tivermos múltiplos CNPJs, trate um por um
+                if (count($documentos) > 1) {
+                    $resultados = [];
+                    foreach ($documentos as $documento) {
+                        if (!empty($documento)) {
+                            $resultados[] = $adapter->consultaCnpj($documento);
+                        }
+                    }
+                    return $resultados;
+                } else {
+                    return $adapter->consultaCnpj($documentos[0]);
+                }
             case 'CNIS':
-                return $adapter->consultaCnis($documentos[0]);
+                // Se tivermos múltiplos CPFs para CNIS, trate um por um
+                if (count($documentos) > 1) {
+                    $resultados = [];
+                    foreach ($documentos as $documento) {
+                        if (!empty($documento)) {
+                            $resultados[] = $adapter->consultaCnis($documento);
+                        }
+                    }
+                    return $resultados;
+                } else {
+                    return $adapter->consultaCnis($documentos[0]);
+                }
             default:
                 throw new \InvalidArgumentException("Tipo de consulta inválido: $tipo");
         }
+    } catch (\Exception $e) {
+        error_log("Erro ao realizar consulta: " . $e->getMessage());
+        return ['error' => $e->getMessage()];
     }
+}
 
     public function getStatisticsByMonth()
     {

@@ -1,13 +1,18 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php'; // Ajuste o caminho conforme necessário
+// api.php
+require_once __DIR__ . '/vendor/autoload.php';
 
-require __DIR__ . '/app/Controllers/ConsultaController.php';
-use App\Controllers\ConsultaController;
+// Carregar variáveis de ambiente
+use App\Core\EnvLoader;
+EnvLoader::load();
 
+use App\Factories\ControllerFactory;
+// Resto do seu código...
 
 session_start();
 
-$controller = new ConsultaController();
+// Usar a factory para criar o controller corretamente
+$controller = ControllerFactory::createConsultaController();
 
 header('Content-Type: application/json');
 
