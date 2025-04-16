@@ -1,79 +1,75 @@
-<!-- /var/www/html/conectaPapem_DP/public/templates/consulta.php -->
-<main class="flex flex-col relative bg-white border border-gray-300 shadow-md rounded-lg p-8 w-full max-w-4xl mx-auto my-12 min-h-[320px] opacity-0 transform -translate-y-5 animate-fade-in-up">
-    <!-- External jQWidgets resources (leave as is) -->
-    <link rel="stylesheet" href="https://jqwidgets.com/public/jqwidgets/styles/jqx.base.css" type="text/css" />
-    <link rel="stylesheet" href="https://jqwidgets.com/public/jqwidgets/styles/jqx.energyblue.css" type="text/css" />
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxcore.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxdata.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxbuttons.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxscrollbar.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxmenu.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxgrid.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxgrid.selection.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxgrid.columnsresize.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxgrid.filter.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxgrid.sort.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxgrid.pager.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxlistbox.js"></script>
-    <script src="https://jqwidgets.com/public/jqwidgets/jqxdropdownlist.js"></script>
-    
-    <form id="formConsulta" class="animate-fade-in" enctype="multipart/form-data" method="post">
-        <div id="digenv" class="flex items-center justify-center mb-6">
-            <!-- Toggle buttons with Tailwind -->
-            <input id="toggle-on" name="opcao" value="digitar" class="hidden" onchange="mostrarOpcao('digitar')" type="radio">
-            <label for="toggle-on" class="relative border-2 border-gray-800 inline-flex flex-col items-center p-3 cursor-pointer w-24 h-20 text-center transition-all duration-500 overflow-hidden">
-                Digitar Dados
-                <img src="../img/digitando3.png" alt="Ícone" class="w-8 h-8 my-1">
-            </label>
-            
-            <img src="../img/seta.png" alt="Ícone" class="w-16 h-8 mx-2">
-            
-            <input id="toggle-off" name="opcao" class="hidden" value="arquivo" onchange="mostrarOpcao('arquivo')" type="radio">
-            <label for="toggle-off" class="relative border-2 border-gray-800 inline-flex flex-col items-center p-3 cursor-pointer w-24 h-20 text-center transition-all duration-500 overflow-hidden">
-                Enviar Arquivo
-                <img src="../img/arquivo2.png" alt="Ícone" class="w-8 h-8 my-1">
-            </label>
-        </div>
-
-        <div>
-            <div class="flex justify-center mb-4">
+<!-- File: app/Views/pages/consulta.php -->
+<div class="container mx-auto px-4 pb-12">
+    <div class="bg-white rounded-lg shadow-md p-8 max-w-3xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Consulta de Dados</h1>
+        <p class="text-center text-gray-600 mb-8">Escolha o tipo de dado e como deseja fornecer as informações.</p>
+        
+        <form id="formConsulta" class="space-y-8" enctype="multipart/form-data" method="post">
+            <!-- Tipo de Dado selection -->
+            <div class="flex items-center space-x-4 justify-center">
+                <label for="consultar" class="text-gray-700 font-medium w-32">Tipo de Dado:</label>
                 <select name="consultar" id="consultar" 
-                        class="py-2 px-4 border border-gray-300 rounded-md bg-gray-50 text-gray-700 appearance-none cursor-pointer w-11/12" 
+                        class="py-2 px-4 w-64 border border-gray-300 rounded-md bg-white text-gray-700 appearance-none cursor-pointer" 
                         onchange="changeOption()">
                     <option value="CPF">CPF</option>
                     <option value="CNPJ">CNPJ</option>
                     <option value="CNIS">CNIS</option>
                 </select>
-                <input type="hidden" id="opcao" name="opcao" value="">
             </div>
             
-            <div id="cpfInput" class="hidden w-4/5 mx-auto transform translate-x-[10%] rounded-md">
+            <!-- Toggle buttons for input method -->
+            <div class="flex justify-center items-center space-x-4">
+                <input id="toggle-on" name="opcao" value="digitar" class="hidden" type="radio">
+                <label for="toggle-on" id="btn-digitar" 
+                       class="border-2 border-gray-800 py-3 px-4 inline-flex flex-col items-center justify-center w-40 h-24 bg-white hover:bg-gray-100 cursor-pointer"
+                       onclick="mostrarOpcao('digitar')">
+                    <span class="mb-2">Digitar Dados</span>
+                    <img src="/img/digitando3.png" alt="Digitar Dados" class="w-8 h-8">
+                </label>
+                
+                <span class="text-gray-500 px-2">ou</span>
+                
+                <input id="toggle-off" name="opcao" value="arquivo" class="hidden" type="radio">
+                <label for="toggle-off" id="btn-arquivo" 
+                       class="border-2 border-gray-800 py-3 px-4 inline-flex flex-col items-center justify-center w-40 h-24 bg-white hover:bg-gray-100 cursor-pointer"
+                       onclick="mostrarOpcao('arquivo')">
+                    <span class="mb-2">Enviar Arquivo</span>
+                    <img src="/img/arquivo2.png" alt="Enviar Arquivo" class="w-8 h-8">
+                </label>
+            </div>
+            
+            <input type="hidden" id="opcao" name="opcao" value="">
+            
+            <!-- Input fields (initially hidden) -->
+            <div id="cpfInput" class="hidden mx-auto max-w-md">
                 <input id="documento" name="documento" type="text" placeholder="Insira o CPF"
-                       class="w-full py-2.5 px-4 rounded-md border border-gray-300 text-sm">
+                       class="w-full py-3 px-4 border border-gray-300 rounded-md text-gray-700">
             </div>
             
-            <div id="arquivoInput" class="hidden w-4/5 mx-auto transform translate-x-[10%] rounded-md">
+            <div id="arquivoInput" class="hidden mx-auto max-w-md">
                 <label for="fileInput" 
-                       class="cursor-pointer relative overflow-hidden inline-flex items-center border border-gray-300 rounded-md p-3 bg-gray-50 text-gray-700">
-                    <img src="../img/xlsx.jpg" alt="Ícone" class="w-10 h-10 mr-2">
+                       class="flex items-center justify-center space-x-3 py-3 px-4 border border-gray-300 rounded-md bg-white text-gray-700 cursor-pointer hover:bg-gray-50">
+                    <img src="/img/xlsx.jpg" alt="Ícone" class="w-10 h-10">
                     <span id="fileLabelText">Importe seu arquivo</span>
                     <input type="file" name="fileInput" id="fileInput" accept=".xls, .xlsx"
-                           class="absolute top-0 right-0 opacity-0 cursor-pointer">
+                           class="hidden">
                 </label>
             </div>
             
-            <div class="flex justify-center items-center mt-3">
-                <label id="labelRemoveFileButton" class="hidden cursor-pointer mx-2" onclick="removeFile()">
+            <!-- File handling buttons -->
+            <div class="flex justify-center items-center space-x-4">
+                <label id="labelRemoveFileButton" class="hidden cursor-pointer text-red-600 flex items-center" onclick="removeFile()">
                     Remover
-                    <img id="removeFileButton" class="hidden w-5 h-5 ml-1" src="../img/btn_x.png" alt="Remover">
+                    <img id="removeFileButton" class="hidden w-5 h-5 ml-1" src="/img/btn_x.png" alt="Remover">
                 </label>
-                <label id="labelChangeFileButton" class="hidden cursor-pointer mx-2" onclick="changeFile()">
+                <label id="labelChangeFileButton" class="hidden cursor-pointer text-blue-600 flex items-center" onclick="changeFile()">
                     Trocar
-                    <img id="changeFileButton" class="hidden w-5 h-5 ml-1" src="../img/btn_e.png" alt="Editar">
+                    <img id="changeFileButton" class="hidden w-5 h-5 ml-1" src="/img/btn_e.png" alt="Editar">
                 </label>
             </div>
             
-            <div id="loadingIndicator" class="hidden text-center py-5">
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" class="hidden text-center">
                 <span>Carregando</span>
                 <div class="inline-flex">
                     <div class="w-2 h-2 rounded-full bg-black mx-1 animate-pulse" style="animation-delay: -0.32s"></div>
@@ -82,32 +78,91 @@
                 </div>
             </div>
             
+            <!-- Grid container for results -->
             <div id="gridContainer"></div>
-            <div class="input-container"></div>
             
-            <button id="btn_consult" 
-                    class="hidden mx-auto mt-5 mb-2 py-2.5 px-5 w-4/5 border border-blue-500 rounded-md bg-blue-500 text-white font-bold text-center cursor-pointer shadow-sm transition-all hover:bg-blue-600 hover:border-blue-600 animate-fade-in" 
-                    type="button" 
-                    onclick="validateAndSubmit()">
-                Consultar
-            </button>
+            <!-- Submit button -->
+            <div class="text-center">
+                <button id="btn_consult" 
+                        class="hidden py-3 px-6 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors mx-auto"
+                        type="button" 
+                        onclick="validateAndSubmit()">
+                    Consultar
+                </button>
+            </div>
+        </form>
+        
+        <!-- Results section -->
+        <div id="jq" class="mt-8 w-full">
+            <table id="resultTable" class="hidden w-full border-collapse">
+                <thead>
+                    <tr id="tableHeader" class="bg-gray-100"></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="jqxgrid" class="mt-5 mb-5">
+                <table id="tabelaResultado"></table>
+            </div>
+            <div class="text-center">
+                <button id="btn_exportar_xlsx" 
+                        class="hidden py-2 px-4 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 transition-colors" 
+                        onclick="exportarXLSX()">
+                    Exportar para XLSX
+                </button>
+            </div>
         </div>
-    </form>
-
-    <div id="jq" class="mt-20 w-4/5 max-w-xl flex flex-col items-center">
-        <table id="resultTable" class="display">
-            <thead>
-                <tr id="tableHeader"></tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <div id="jqxgrid" class="mt-5 mb-12 overflow-y-auto ml-20">
-            <table id="tabelaResultado"></table>
-        </div>
-        <button id="btn_exportar_xlsx" 
-                class="hidden ml-20 py-2.5 px-5 border border-blue-500 rounded-md bg-blue-500 text-white text-center cursor-pointer shadow-sm transition-all hover:bg-blue-600" 
-                onclick="exportarXLSX()">
-            Exportar para XLSX
-        </button>
     </div>
-</main>
+</div>
+
+<script>
+    // JavaScript to handle the toggle buttons
+    function mostrarOpcao(opcao) {
+        // Update hidden input value
+        document.getElementById('opcao').value = opcao;
+        
+        // Highlight selected button
+        document.getElementById('btn-digitar').classList.remove('bg-blue-100', 'border-blue-500');
+        document.getElementById('btn-arquivo').classList.remove('bg-blue-100', 'border-blue-500');
+        
+        if (opcao === 'digitar') {
+            document.getElementById('btn-digitar').classList.add('bg-blue-100', 'border-blue-500');
+            document.getElementById('cpfInput').classList.remove('hidden');
+            document.getElementById('arquivoInput').classList.add('hidden');
+        } else {
+            document.getElementById('btn-arquivo').classList.add('bg-blue-100', 'border-blue-500');
+            document.getElementById('arquivoInput').classList.remove('hidden');
+            document.getElementById('cpfInput').classList.add('hidden');
+        }
+        
+        // Show consult button
+        document.getElementById('btn_consult').classList.remove('hidden');
+    }
+    
+    // Handle file selection
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'Importe seu arquivo';
+        document.getElementById('fileLabelText').textContent = fileName;
+        
+        if (e.target.files[0]) {
+            document.getElementById('removeFileButton').classList.remove('hidden');
+            document.getElementById('changeFileButton').classList.remove('hidden');
+            document.getElementById('labelRemoveFileButton').classList.remove('hidden');
+            document.getElementById('labelChangeFileButton').classList.remove('hidden');
+        }
+    });
+    
+    // Remove file function
+    function removeFile() {
+        document.getElementById('fileInput').value = '';
+        document.getElementById('fileLabelText').textContent = 'Importe seu arquivo';
+        document.getElementById('removeFileButton').classList.add('hidden');
+        document.getElementById('changeFileButton').classList.add('hidden');
+        document.getElementById('labelRemoveFileButton').classList.add('hidden');
+        document.getElementById('labelChangeFileButton').classList.add('hidden');
+    }
+    
+    // Change file function
+    function changeFile() {
+        document.getElementById('fileInput').click();
+    }
+</script>
