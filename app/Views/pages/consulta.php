@@ -1,42 +1,44 @@
 <!-- File: app/Views/pages/consulta.php -->
-<div class="container mx-auto px-4 pb-12">
+<div class="container mx-auto px-4 pb-12 pt-32"> <!-- Added pt-32 for header spacing -->
     <div class="bg-white rounded-lg shadow-md p-8 max-w-3xl mx-auto">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Consulta de Dados</h1>
-        <p class="text-center text-gray-600 mb-8">Escolha o tipo de dado e como deseja fornecer as informações.</p>
+        <h1 class="text-3xl font-bold text-center text-gray-900 mb-4">Consulta de Dados</h1>
+        <p class="text-center text-gray-600 mb-6">Escolha o tipo de dado e como deseja fornecer as informações.</p>
         
         <form id="formConsulta" class="space-y-8" enctype="multipart/form-data" method="post">
-            <!-- Tipo de Dado selection -->
-            <div class="flex items-center space-x-4 justify-center">
-                <label for="consultar" class="text-gray-700 font-medium w-32">Tipo de Dado:</label>
-                <select name="consultar" id="consultar" 
-                        class="py-2 px-4 w-64 border border-gray-300 rounded-md bg-white text-gray-700 appearance-none cursor-pointer" 
-                        onchange="changeOption()">
-                    <option value="CPF">CPF</option>
-                    <option value="CNPJ">CNPJ</option>
-                    <option value="CNIS">CNIS</option>
-                </select>
-            </div>
+         
+        <div>
+</div>
+        
+       <!-- Select dropdown styling -->
+<div class="flex items-center space-x-4 justify-center mb-8">
+    <label for="consultar" class="text-gray-700 font-medium w-32">Tipo de Dado:</label>
+    <select name="consultar" id="consultar" 
+            class="py-2 px-4 w-64 border border-gray-300 rounded-md bg-white text-gray-700 appearance-none cursor-pointer" 
+            onchange="changeOption()">
+        <option value="CPF">CPF</option>
+        <option value="CNPJ">CNPJ</option>
+        <option value="CNIS">CNIS</option>
+    </select>
+</div>
             
-            <!-- Toggle buttons for input method -->
-            <div class="flex justify-center items-center space-x-4">
-                <input id="toggle-on" name="opcao" value="digitar" class="hidden" type="radio">
-                <label for="toggle-on" id="btn-digitar" 
-                       class="border-2 border-gray-800 py-3 px-4 inline-flex flex-col items-center justify-center w-40 h-24 bg-white hover:bg-gray-100 cursor-pointer"
-                       onclick="mostrarOpcao('digitar')">
-                    <span class="mb-2">Digitar Dados</span>
-                    <img src="/img/digitando3.png" alt="Digitar Dados" class="w-8 h-8">
-                </label>
-                
-                <span class="text-gray-500 px-2">ou</span>
-                
-                <input id="toggle-off" name="opcao" value="arquivo" class="hidden" type="radio">
-                <label for="toggle-off" id="btn-arquivo" 
-                       class="border-2 border-gray-800 py-3 px-4 inline-flex flex-col items-center justify-center w-40 h-24 bg-white hover:bg-gray-100 cursor-pointer"
-                       onclick="mostrarOpcao('arquivo')">
-                    <span class="mb-2">Enviar Arquivo</span>
-                    <img src="/img/arquivo2.png" alt="Enviar Arquivo" class="w-8 h-8">
-                </label>
-            </div>
+       <!-- In app/Views/pages/consulta.php, update the toggle buttons -->
+<div class="flex justify-center items-center space-x-8 my-6">
+    <input id="toggle-on" name="opcao" value="digitar" class="hidden" type="radio">
+    <label for="toggle-on" id="btn-digitar" 
+           class="border-2 border-gray-800 py-4 px-5 inline-flex flex-col items-center justify-center w-40 h-28 bg-white hover:bg-gray-100 cursor-pointer transition duration-300">
+        <span class="mb-2 font-medium">Digitar Dados</span>
+        <img src="/img/digitando3.png" alt="Digitar Dados" class="w-10 h-10">
+    </label>
+    
+    <span class="text-gray-600 font-medium">ou</span>
+    
+    <input id="toggle-off" name="opcao" value="arquivo" class="hidden" type="radio">
+    <label for="toggle-off" id="btn-arquivo" 
+           class="border-2 border-gray-800 py-4 px-5 inline-flex flex-col items-center justify-center w-40 h-28 bg-white hover:bg-gray-100 cursor-pointer transition duration-300">
+        <span class="mb-2 font-medium">Enviar Arquivo</span>
+        <img src="/img/arquivo2.png" alt="Enviar Arquivo" class="w-10 h-10">
+    </label>
+</div>
             
             <input type="hidden" id="opcao" name="opcao" value="">
             

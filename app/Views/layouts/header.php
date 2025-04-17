@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title><?= $pageTitle ?? 'Conecta PAPEM' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/tailwind.css">
+  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include jQWidgets only if needed on the current page -->
     <?php if (isset($includeJqWidgets) && $includeJqWidgets): ?>
     <link rel="stylesheet" href="https://jqwidgets.com/public/jqwidgets/styles/jqx.base.css" type="text/css" />
@@ -28,7 +28,8 @@
     <script src="https://jqwidgets.com/public/jqwidgets/jqxlistbox.js"></script>
     <script src="https://jqwidgets.com/public/jqwidgets/jqxdropdownlist.js"></script>
     <?php endif; ?>
-    
+    <link rel="stylesheet" href="ConectaPapem_DP/../../public/css/tailwind.css">
+    <link href="ConectaPapem_DP/../../public/css/custom.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>

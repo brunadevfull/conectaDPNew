@@ -1,0 +1,120 @@
+/* Custom CSS for styles not easily handled by Tailwind */
+:root {
+    /* Preserve all existing CSS variables */
+    --background-color-1: #031633;
+    --background-color-2: #084298;
+    --background-color-3: #042454;
+    
+    /* Other color variables */
+    --azul-light: #e6e7ec;
+    --azul-light-hover: #dadbe3;
+    --azul-light-active: #b2b5c4;
+    --azul-normal: #050f41;
+  }
+  
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  /* Header specific styles */
+  .header-gradient {
+    background-image: linear-gradient(to bottom, var(--background-color-1), var(--background-color-2));
+  }
+  
+  .header-shadow {
+    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px;
+  }
+  /* Main header styling */
+#topo {
+  background: linear-gradient(to right, #003875, #002756);
+}
+
+/* Logo area styling */
+#block-mb01-branding .flex.items-center img {
+  height: 4rem;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+}
+
+#block-mb01-branding .text-white h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+#block-mb01-branding .text-white h6 {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+/* Center CONECTA PAPEM styling */
+.absolute.top-1\/2.left-1\/2.transform.-translate-x-1\/2.-translate-y-1\/2 {
+  text-align: center;
+}
+
+.absolute.top-1\/2.left-1\/2.transform.-translate-x-1\/2.-translate-y-1\/2 img {
+  height: 5rem;
+}
+
+.absolute.top-1\/2.left-1\/2.transform.-translate-x-1\/2.-translate-y-1\/2 .text-center span {
+  display: block;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  line-height: 1;
+}
+
+/* Bottom navigation bar */
+.bg-blue-800.absolute.bottom-0 {
+  background-color: #001E42;
+  width: 100%;
+}
+
+.bg-blue-800.absolute.bottom-0 ul {
+  display: flex;
+  gap: 1rem;
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.25rem 0;
+}
+
+.bg-blue-800.absolute.bottom-0 a:hover {
+  color: #BFDBFE;
+}
+
+/* Disclaimer */
+#disclaimer {
+  position: relative;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  background-color: #F3F4F6;
+  text-align: center;
+  padding: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #topo {
+    height: 144px;
+  }
+  
+  .absolute.top-1\/2.left-1\/2.transform.-translate-x-1\/2.-translate-y-1\/2 {
+    display: none;
+  }
+  
+  #block-mb01-branding .text-white h6 {
+    display: none;
+  }
+  
+  .bg-blue-800.absolute.bottom-0 ul {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}

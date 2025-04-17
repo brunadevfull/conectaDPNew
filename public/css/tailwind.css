@@ -184,8 +184,11 @@
   }
   
   /* Header and navigation */
-  .header {
-    @apply bg-blue-700 w-full z-50 top-0 fixed h-36;
+  header {
+    @apply bg-blue-800 w-full z-50 top-0 fixed h-36; 
+  }
+  .main-container {
+    @apply flex flex-col relative bg-white border border-gray-300 shadow-md rounded-lg p-8 w-full max-w-3xl mx-auto my-12 min-h-[320px] justify-center;
   }
   
   /* Utility classes */
@@ -200,4 +203,5 @@
   .animate-fade-in-up {
     animation: slideFadeInUp 0.5s ease-out forwards;
   }
+
 }
